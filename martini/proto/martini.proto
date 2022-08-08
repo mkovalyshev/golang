@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package main;
+
+option go_package = "./proto";
+
+service Martini {
+    rpc Echo(google.protobuf.Empty) returns (EchoMessage) {}
+    rpc GetEntity(EntityRequest) returns (Entity) {}
+}
+
+message EchoMessage {
+    string echo = 1;
+}
+
+message EntityRequest {
+    int32 id = 1;
+}
+
+message Entity {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+}
